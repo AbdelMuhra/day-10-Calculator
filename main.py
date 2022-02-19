@@ -37,8 +37,10 @@ for operator in operations:
 
 #user selects operator
 selected_operator = input("Pick an operator: ")
-print(operations[selected_operator](num1, num2))
 
+answer = operations[selected_operator](num1, num2)
+
+print(f"{num1} {selected_operator} {num2} = {answer}")
 
 
 
