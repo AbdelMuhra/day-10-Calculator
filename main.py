@@ -29,22 +29,20 @@ operations = {
 
 #intial inputs
 num1 = int(input("What is the first number: "))
-num2 = int(input("What is the first number: "))
 
 #display operators
 for operator in operations:
   print(operator)
-
 #user selects operator
 selected_operator = input("Pick an operator: ")
+num2 = int(input("What is the second number: "))
+initial_answer = operations[selected_operator](num1, num2)
+print(f"{num1} {selected_operator} {num2} = {initial_answer}")
 
-answer = operations[selected_operator](num1, num2)
-
-print(f"{num1} {selected_operator} {num2} = {answer}")
-
-
-
-
+selected_operator = input("Pick an operator: ")
+num3 = int(input("What is the next number: "))
+second_answer = operations[selected_operator](initial_answer, num3)
+print(f"{initial_answer} {selected_operator} {num3} = {second_answer}")
 
 
 
