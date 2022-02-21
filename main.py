@@ -1,5 +1,5 @@
+from replit import clear
 from art import logo
-print(logo)
 
 #calculator
 
@@ -27,41 +27,26 @@ operations = {
   "/": divide,
 }
 
-#intial inputs
-num1 = int(input("What is the first number: "))
+def calculator():
+  print(logo)
 
-#display operators
-for operator in operations:
-  print(operator)
-#user selects operator
-selected_operator = input("Pick an operator: ")
-num2 = int(input("What is the second number: "))
-initial_answer = operations[selected_operator](num1, num2)
-print(f"{num1} {selected_operator} {num2} = {initial_answer}")
+  num1 = float(input("What's the first number?: "))
+  for symbol in operations:
+    print(symbol)
+  should_continue = True
+ 
+  while should_continue:
+    operation_symbol = input("Pick an operation: ")
+    num2 = float(input("What's the next number?: "))
+    calculation_function = operations[operation_symbol]
+    answer = calculation_function(num1, num2)
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
 
-selected_operator = input("Pick an operator: ")
-num3 = int(input("What is the next number: "))
-second_answer = operations[selected_operator](initial_answer, num3)
-print(f"{initial_answer} {selected_operator} {num3} = {second_answer}")
+    if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == 'y':
+      num1 = answer
+    else:
+      should_continue = False
+      clear()
+      calculator()
 
-
-
-
-
-# #functions with outputs
-# f_name = input("What is your first name?")
-
-# l_name = input("What is your last name?")
-
-
-
-# def format_name(fname, lname):
-#   """Takes the first and last name and 
-#   formats it so that the first letter is capitalized."""
-#   formated_f_name = fname.title()
-#   formated_l_name = lname.title()
-#   fullname = print(f"{formated_f_name} {formated_l_name}")
-#   return fullname
-
-# format_name(f_name, l_name)
-# format_name()
+calculator()
